@@ -1,0 +1,47 @@
+<style>
+  /* Set initial color of all text to blue */
+  .w-tab-link .grayscale {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease; /* Add transition effect */
+  }
+  /* Define styles for active tab menu item */
+  .w-tab-link.active .grayscale {
+    filter: grayscale(0%);
+  }
+  .w-tab-pane {
+    display: none; /* Hide tab content initially */
+  }
+  .w-tab-pane.active {
+    display: block; /* Display active tab content */
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var tabLinks = document.querySelectorAll(".w-tab-link");
+
+    tabLinks.forEach(function (tabLink) {
+      tabLink.addEventListener("click", function (event) {
+        // Remove active class from all tab links
+        tabLinks.forEach(function (link) {
+          link.classList.remove("active");
+        });
+
+        // Add active class to the clicked tab link
+        this.classList.add("active");
+
+        // Show the corresponding tab content
+        var targetPaneId = this.getAttribute("href");
+        var targetPane = document.querySelector(targetPaneId);
+
+        // Hide all tab content
+        document.querySelectorAll(".w-tab-pane").forEach(function (pane) {
+          pane.classList.remove("active");
+        });
+
+        // Show the clicked tab content
+        targetPane.classList.add("active");
+      });
+    });
+  });
+</script>

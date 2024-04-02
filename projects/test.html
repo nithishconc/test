@@ -1,0 +1,77 @@
+<style>
+  .tab-pane-tab-1 {
+    opacity: 1;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+
+  .tab-pane-tab-1.hidden {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+  }
+
+  .tabs-menu-4 .tab-link-tab-1-2.active {
+    font-weight: bold;
+    color: blue;
+    transform: scale(1.1); /* Scale the active tab */
+    transition: transform 0.3s ease; /* Add transition for smooth scaling */
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabLinks = document.querySelectorAll(
+      ".tabs-menu-4 .tab-link-tab-1-2"
+    );
+    const tabContents = document.querySelectorAll(".tab-pane-tab-1");
+    const leftArrow = document.querySelector(".speaker-arrow-5.left");
+    const rightArrow = document.querySelector(".speaker-arrow-5.right");
+    let currentTabIndex = 0;
+
+    function updateTabContent(index) {
+      // Update tab content visibility
+      tabContents.forEach((tab, i) => {
+        if (i === index) {
+          tab.classList.remove("hidden");
+        } else {
+          tab.classList.add("hidden");
+        }
+      });
+
+      // Update active state of tab menu items
+      tabLinks.forEach((link, i) => {
+        if (i === index) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
+        }
+      });
+    }
+
+    leftArrow.addEventListener("click", function (event) {
+      event.preventDefault();
+      currentTabIndex =
+        currentTabIndex === 0 ? tabLinks.length - 1 : currentTabIndex - 1;
+      updateTabContent(currentTabIndex);
+    });
+
+    rightArrow.addEventListener("click", function (event) {
+      event.preventDefault();
+      currentTabIndex =
+        currentTabIndex === tabLinks.length - 1 ? 0 : currentTabIndex + 1;
+      updateTabContent(currentTabIndex);
+    });
+
+    tabLinks.forEach((link, index) => {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        currentTabIndex = index;
+        updateTabContent(currentTabIndex);
+      });
+    });
+
+    // Show initial tab content
+    updateTabContent(currentTabIndex);
+  });
+</script>
+

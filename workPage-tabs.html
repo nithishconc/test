@@ -1,0 +1,56 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var tabLinks = document.querySelectorAll(".w-tab-link");
+        var tabContents = document.querySelectorAll(".w-tab-pane");
+        function activateTabFromHash() {
+          var hash = decodeURIComponent(window.location.hash.substring(1)); // Decode the hash
+          if (hash) {
+            var tabLink = document.querySelector(
+              ".w-tab-link[data-w-tab='" + hash + "']"
+            );
+            if (tabLink) {
+              tabLink.click(); // Activate the tab if found
+            }
+          }
+        }
+        function activateTab(tabLink) {
+          tabLinks.forEach(function (link) {
+            link.classList.remove("w--current");
+          });
+          tabLink.classList.add("w--current");
+          var targetTabId = tabLink.getAttribute("data-w-tab");
+          tabContents.forEach(function (tabContent) {
+            if (tabContent.getAttribute("data-w-tab") === targetTabId) {
+              tabContents.forEach(function (content) {
+                content.classList.remove("w--tab-active");
+              });
+              tabContent.classList.add("w--tab-active");
+            }
+          });
+          history.replaceState(
+            null,
+            null,
+            "#" + encodeURIComponent(targetTabId)
+          ); // Encode the hash
+        }
+        tabLinks.forEach(function (tabLink) {
+          tabLink.addEventListener("click", function (e) {
+            e.preventDefault(); // Prevent default link behavior
+            activateTab(tabLink);
+          });
+        });
+        activateTabFromHash();
+        window.addEventListener("hashchange", function () {
+          activateTabFromHash();
+        });
+      });
+    </script>
+  </head>
+  <body></body>
+</html>

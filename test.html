@@ -1,0 +1,204 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.css"
+/>
+<style type="text/css">
+  .about-page-timeline-projects {
+    z-index: -1;
+  }
+  .slick-list {
+    padding: 0 !important;
+  }
+  /* TImeline border*/
+  .timeline-item::after {
+    background-color: black;
+    border-radius: 6px;
+    top: 46%;
+    content: "";
+    height: 10px;
+    left: 26%;
+    position: absolute;
+    transform: translateX(-25%);
+    width: 10px;
+  }
+
+  .timeline-frame {
+    margin-bottom: 50px !important;
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 40px;
+    
+  }
+  .timeline-nav .slick-list::before {
+    background-color: rgb(238, 238, 238);
+    border-radius: 1px;
+    content: "";
+    height: 3px;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 100%;
+  }
+
+  .slick-prev,
+  .slick-next {
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 54%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    margin-top: -10px;
+    padding: 0;
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: 0;
+    background: black;
+    border-radius: 100%;
+  }
+  .slick-prev:hover,
+  .slick-prev:focus,
+  .slick-next:hover,
+  .slick-next:focus {
+    background-color: black;
+    color: black;
+  }
+  .slick-next:before {
+    content: "";
+    background-size: cover;
+
+    background-image: url("https://uploads-ssl.webflow.com/65ea990f8191625d7be3de9a/65f2fbe6dc709c09c7d9b5f3_vector-right.png");
+    width: 15px;
+    height: 15px;
+  }
+
+  .slick-prev:before {
+    content: "";
+
+    background-size: cover;
+    background-image: url("https://uploads-ssl.webflow.com/65ea990f8191625d7be3de9a/65f2fbe81d0ffad3147a7d75_vector-left.png");
+
+    width: 15px;
+    height: 15px;
+  }
+
+  .slick-prev,
+  .slick-next {
+    margin-top: -20px;
+    color: black;
+    z-index: 9999;
+  }
+
+  .slick-current .timeline-text {
+    color: black;
+    font-weight: 600;
+  }
+
+  .timeline-item.slick-current::after {
+    background-color: black;
+    box-shadow: 0px -1px 0px 5px rgba(192, 192, 192, 0.25);
+  }
+
+  .w-lightbox-caption {
+    background: red !important;
+    text-align: center !important;
+  }
+  @media (max-width: 1400px) {
+    .timeline-nav {
+      width: 93%;
+    }
+    .timeline-item {
+      padding-left: 7px !important;
+    }
+    .timeline-text {
+      padding-top: 20px;
+    }
+  }
+  @media (max-width: 1280px) {
+    .timeline-nav {
+      width: 92.5%;
+    }
+    .timeline-item {
+      padding-left: 0px !important;
+    }
+    .timeline-text {
+      padding-top: 20px;
+    }
+  }
+  @media (max-width: 1024px) {
+    .timeline-nav {
+      width: 90%;
+    }
+    .timeline-item {
+      padding-left: 6px !important;
+    }
+    .timeline-text {
+      padding-top: 20px;
+    }
+  }
+  @media (max-width: 990px) {
+    .timeline-nav {
+      width: 98%;
+      margin-left: 0px;
+      padding-left: 0px;
+      margin-right: 0px;
+      padding-right: 0px;
+    }
+    .timeline-item .slick-list {
+      background-color: red;
+    }
+    .slick-prev {
+      left: 0px;
+    }
+    .slick-next {
+      right: 0px;
+    }
+    .timeline-item {
+      padding-left: 24px !important;
+    }
+    .timeline-text {
+      padding-top: 20px;
+    }
+  }
+  @media (max-width: 750px) {
+    .div-block-66 {
+      width: 100% !important;
+    }
+    .timeline-nav {
+      width: 100% !important;
+    }
+    .timeline-item {
+      padding-left: 24px !important;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .timeline-item {
+      padding-left: 20px !important;
+    }
+    .timeline-item {
+      padding-left: 15px !important;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .timeline-item {
+      padding-left: 20px !important;
+    }
+    .timeline-item {
+      padding-left: 15px !important;
+    }
+  }
+</style>

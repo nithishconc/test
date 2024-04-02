@@ -1,0 +1,150 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var tabLinks = document.querySelectorAll(".w-tab-link");
+        var tabContents = document.querySelectorAll(".w-tab-pane");
+    
+        function activateTabFromHash() {
+            var hash = decodeURIComponent(window.location.hash.substring(1)); 
+            if (hash) {
+                var tabLink = document.querySelector(".w-tab-link[data-w-tab='" + hash + "']");
+                if (tabLink) {
+                    activateTab(tabLink);
+                }
+            }
+        }
+    
+        function activateTab(tabLink) {
+            tabLinks.forEach(function(link) {
+                link.classList.remove("w--current");
+                link.style.fontWeight = "normal"; // Set the font weight to normal for all tab links
+            });
+    
+            tabLink.classList.add("w--current");
+            tabLink.style.fontWeight = "bold"; // Set the font weight to bold for the active tab link
+    
+            var targetTabId = tabLink.getAttribute("data-w-tab");
+            tabContents.forEach(function(tabContent) {
+                if (tabContent.getAttribute("data-w-tab") === targetTabId) {
+                    tabContents.forEach(function(content) {
+                        content.classList.remove("w--tab-active");
+                    });
+                    tabContent.classList.add("w--tab-active");
+                }
+            });
+    
+            history.replaceState(null, null, "#" + encodeURIComponent(targetTabId)); 
+        }
+    
+        tabLinks.forEach(function(tabLink) {
+            tabLink.addEventListener("click", function(e) {
+                e.preventDefault(); 
+                activateTab(tabLink); 
+            });
+        });
+    
+        activateTabFromHash();
+    
+        window.addEventListener("hashchange", function() {
+            activateTabFromHash();
+        });
+    });
+    </script>
+    
+    <script>
+    // Function to handle URL change and update link colors
+    function handleURLChange() {
+        var currentHash = window.location.hash.substring(1); // Remove the '#' from the hash
+    
+        // Remove color and reset font weight for all category links
+        var allLinks = document.querySelectorAll('.work-link, .housing-link, .commercial-link, .institutional-link, .interiors-link, .feasibility-link');
+        console.log(allLinks)
+        allLinks.forEach(function (link) {
+            link.style.color = ''; // Reset color
+            link.style.fontWeight = ''; // Reset font weight
+        });
+    
+        // Define a mapping between hash values and corresponding class names
+        var classMap = {
+            "housing": "housing-link",
+            "commercial": "commercial-link",
+            "institutional": "institutional-link",
+            "interior": "interiors-link",
+            "all":"work-link",
+            "feasibility":"feasibility-link"
+    
+            // Updated to use "interior" instead of "interiors"
+            // Add more hash-value-to-class-name mappings as needed
+        };
+    
+        // Check if the current hash value exists in the class map
+        if (currentHash in classMap) {
+            // Get the class name corresponding to the hash value
+            var className = classMap[currentHash];
+            // Change color and font weight of the corresponding class
+            var links = document.querySelectorAll('.' + className);
+            links.forEach(function (link) {
+                link.style.color = 'black'; // Change color to blue
+                link.style.fontWeight = '400'; // Change font weight to 900
+            });
+        } else {
+            console.log("No corresponding class found for hash value:", currentHash);
+        }
+    }
+    
+    // Function to handle page load and hash change
+    function handlePageLoadAndHashChange() {
+        handleURLChange(); // Apply styles based on current URL hash on page load
+    
+        // Listen for hash change event after the page has loaded
+        window.addEventListener('hashchange', handleURLChange);
+    }
+    
+    // Call the function to handle page load and hash change
+    document.addEventListener('DOMContentLoaded', handlePageLoadAndHashChange);
+    
+    // Set up interval to continuously monitor URL changes
+    var urlChangeInterval = setInterval(handleURLChange, 100);
+    
+    // Function to stop monitoring URL changes
+    function stopURLChangeCheck() {
+        clearInterval(urlChangeInterval);
+    }
+    
+    </script>
+    <style>
+        .housing_container_child {
+            opacity: 0;
+            transform: translateY(20px); /* Initial position */
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+    
+        .housing_container_child.active {
+            opacity: 1;
+            transform: translateY(0); /* Move back to original position */
+        }
+    </style>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var cards = document.querySelectorAll('.housing_container_child');
+    
+        // Intersection Observer options
+        var options = {
+            threshold: 0.2 // When 20% of the card is visible
+        };
+    
+        var observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry, index) {
+                if (entry.isIntersecting) {
+                    setTimeout(function() {
+                        entry.target.classList.add('active');
+                    }, index * 100); // Add incremental delay based on index
+                    observer.unobserve(entry.target); // Stop observing once the card is visible
+                }
+            });
+        }, options);
+    
+        cards.forEach(function(card) {
+            observer.observe(card); // Start observing each card
+        });
+    });
+    </script>

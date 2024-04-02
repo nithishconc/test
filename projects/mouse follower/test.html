@@ -1,0 +1,133 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.css"
+/>
+<style>
+  .mf-cursor-text {
+    font-weight: 500;
+    color: black;
+  }
+  .mf-cursor.-text:before {
+    opacity: 1;
+  }
+  .mf-cursor:before {
+    background: white;
+  }
+</style>
+<!-- swipe.js -->
+<script>
+  const cursor = new MouseFollower({
+    speed: 0.8,
+    skewing: 0,
+    skewingText: 1,
+  });
+  const elements = document.querySelectorAll(".test");
+  elements.forEach(function (element) {
+    element.addEventListener("mouseenter", () => {
+      if (element.classList.contains("test")) {
+        cursor.setText("swipe");
+      }
+    });
+    element.addEventListener("mouseleave", () => {
+      cursor.removeText();
+    });
+  });
+</script>
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.css"
+/>
+<style>
+  .mf-cursor-text {
+    font-weight: 500;
+    color: black;
+  }
+  .mf-cursor.-text:before {
+    opacity: 1;
+  }
+  .mf-cursor:before {
+    background: white;
+    width: 30px;
+    height: 30px;
+  }
+  .mf-cursor {
+    display: flex;
+  }
+</style>
+
+<!-- about  -->
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.css"
+/>
+<style>
+  .mf-cursor-text {
+    font-weight: 500;
+    color: black;
+  }
+  .mf-cursor.-text:before {
+    opacity: 1;
+  }
+  .mf-cursor:before {
+    background: white;
+  }
+  .mf-cursor {
+    display: flex;
+  }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+<script src="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.js"></script>
+
+<script>
+  const cursor = new MouseFollower({
+    speed: 0.8,
+    skewing: 0,
+    skewingText: 1,
+  });
+  const meettheteam1 = document.querySelectorAll(".meettheteam1");
+  const meettheteam2 = document.querySelectorAll(".meettheteam2");
+  meettheteam1.forEach(function (element) {
+    element.addEventListener("mouseenter", () => {
+      if (element.classList.contains("meettheteam1")) {
+        cursor.setText("open");
+        document.querySelector(".mf-cursor").style.display = "flex";
+      }
+    });
+
+    element.addEventListener("mouseleave", () => {
+      cursor.removeText();
+      document.querySelector(".mf-cursor").style.display = "none";
+    });
+  }
+  meettheteam2.forEach(function (element) {
+    element.addEventListener("mouseenter", () => {
+      if (element.classList.contains("meettheteam2")) {
+        cursor.setText("open");
+        document.querySelector(".mf-cursor").style.display = "flex";
+      }
+    });
+
+    element.addEventListener("mouseleave", () => {
+      cursor.removeText();
+      document.querySelector(".mf-cursor").style.display = "none";
+    });
+  }
+
+
+  );
+</script>
